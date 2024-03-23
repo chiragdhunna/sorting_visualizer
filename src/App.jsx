@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Appbar from "./components/Appbar";
 import { FaArrowDown } from "react-icons/fa";
-import BubbleSort from "./sorting_methods/Bubble Sort/bubbleSort";
+import BubbleSort from "./Sorting Methods/Bubble Sort/bubbleSort";
 
 function App() {
   return (
