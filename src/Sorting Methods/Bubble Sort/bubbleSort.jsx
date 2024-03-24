@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import "./bubbleSort.css";
-// import Appbar from "../components/Appbar";
-import Appbar from "../../components/Appbar";
+
+function randomColor() {
+  return `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(
+    Math.random() * 255
+  )}, ${Math.floor(Math.random() * 255)})`;
+}
 
 function BubbleSort() {
   let i = 0;
@@ -28,11 +32,7 @@ function BubbleSort() {
             className="UnsortedDivs"
             style={{
               height: `${h}px`,
-              backgroundColor: `rgb(${Math.floor(
-                Math.random() * 255
-              )}, ${Math.floor(Math.random() * 255)}, ${Math.floor(
-                Math.random() * 255
-              )})`,
+              backgroundColor: randomColor(),
             }}
           >
             {Math.floor(h / 100) + 1}
@@ -71,33 +71,10 @@ function BubbleSort() {
     <>
       <div>
         <div>
-          <div
-            style={{
-              height: "70vh",
-              display: "flex",
-              width: "98vw",
-              alignItems: "end",
-              justifyContent: "center",
-              border: "2px solid black",
-              margin: "auto",
-            }}
-          >
-            {cont}
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              padding: "50px",
-              paddingLeft: "200px",
-              paddingRight: "200px",
-            }}
-          >
+          <div className="outer-div-unsorted-divs">{cont}</div>
+          <div className="button-div ">
             <div>
-              <button onClick={heightChange} style={{}}>
-                Randomise
-              </button>
+              <button onClick={heightChange}>Randomise</button>
             </div>
 
             <div>

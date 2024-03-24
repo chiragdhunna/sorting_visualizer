@@ -11,3 +11,22 @@
   text-align: center;
   color: white;
 }
+
+.outer-div-unsorted-divs {
+  height: 70vh;
+  display: flex;
+  width: 98vw;
+  align-items: end;
+  justify-content: center;
+  border: 2px solid black;
+  margin: auto;
+}
+
+.button-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+  padding-left: 200px;
+  padding-right: 200px;
+}
