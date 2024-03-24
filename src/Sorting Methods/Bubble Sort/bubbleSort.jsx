@@ -12,37 +12,41 @@ function BubbleSort() {
 
   const [cont, setCont] = useState([]);
   const [arr, setArr] = useState([]);
-
-  function swap(a, b) {
-    let temp = b;
-    b = a;
-    a = temp;
-  }
+  const [arrSize, setArrSize] = useState(10);
 
   function heightChange() {
     let newCont = [];
     let newArr = [];
-    for (i = 0; i < 10; i++) {
-      let h = Math.floor(Math.random() * (600 - 50 + 1) + 50);
-      newArr.push(h);
-      newCont.push(
-        <div id={i + 70}>
-          <div
-            key={i}
-            className="UnsortedDivs"
-            style={{
-              height: `${h}px`,
-              backgroundColor: randomColor(),
-            }}
-          >
-            {Math.floor(h / 100) + 1}
-          </div>
-        </div>
-      );
-    }
+    let n = arrSize;
+    let container = document.getElementById("1");
 
-    setCont(newCont);
-    setArr(newArr);
+    if (container) {
+      let totalWidth = container.clientWidth;
+
+      let width = totalWidth / n;
+
+      for (let i = 0; i < n; i++) {
+        let h = Math.floor(Math.random() * (600 - 50 + 1) + 50);
+        newArr.push(h);
+        newCont.push(
+          <div key={i}>
+            <div
+              className="UnsortedDivs"
+              style={{
+                width: `${width}px`,
+                height: `${h}px`,
+                backgroundColor: randomColor(),
+              }}
+            ></div>
+          </div>
+        );
+      }
+
+      setCont(newCont);
+      setArr(newArr);
+    } else {
+      console.error("Container not found!");
+    }
   }
 
   async function sort() {
@@ -57,7 +61,7 @@ function BubbleSort() {
           setArr([...tempArr]);
           setCont([...tempCont]);
 
-          await new Promise((resolve) => setTimeout(resolve, 100));
+          await new Promise((resolve) => setTimeout(resolve, 1));
         }
       }
     }
@@ -65,16 +69,34 @@ function BubbleSort() {
 
   useEffect(() => {
     heightChange();
-  }, []);
+  }, [arrSize]);
+
+  function changeArrSize(event) {
+    event.preventDefault();
+    if (event.target[0].value) {
+      setArrSize(event.target[0].value);
+    }
+
+    console.log(event.target[0].value);
+  }
 
   return (
     <>
       <div>
         <div>
-          <div className="outer-div-unsorted-divs">{cont}</div>
+          <div id="1" className="outer-div-unsorted-divs">
+            {cont}
+          </div>
           <div className="button-div ">
             <div>
               <button onClick={heightChange}>Randomise</button>
+            </div>
+
+            <div style={{}}>
+              <form onSubmit={changeArrSize}>
+                <input></input>
+                <button type="submit">Set Val</button>
+              </form>
             </div>
 
             <div>

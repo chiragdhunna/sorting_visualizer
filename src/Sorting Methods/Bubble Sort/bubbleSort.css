@@ -5,11 +5,10 @@
 }
 
 .UnsortedDivs {
-  width: 100px;
-  margin: 5px;
-  font-size: 50px;
-  text-align: center;
-  color: white;
+  margin: 0px;
+  /* font-size: 50px; */
+  /* text-align: center; */
+  /* color: white; */
 }
 
 .outer-div-unsorted-divs {
